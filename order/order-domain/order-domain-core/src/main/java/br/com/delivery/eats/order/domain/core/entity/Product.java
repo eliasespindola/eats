@@ -8,7 +8,6 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-@Builder
 public class Product extends BaseEntity<ProductId> {
     private String name;
     private Money price;

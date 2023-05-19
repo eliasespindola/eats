@@ -6,7 +6,7 @@ import br.com.delivery.eats.order.domain.core.valueobject.StreetAddress;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CreateOrderRequestStreetAddressToStreetAddressMapper implements Mapper<CreateOrderRequest, StreetAddress> {
+public class CreateOrderRequestToStreetAddressMapper implements Mapper<CreateOrderRequest, StreetAddress> {
 
     @Override
     public StreetAddress map(CreateOrderRequest createOrderRequest) {

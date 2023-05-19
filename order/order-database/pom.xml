@@ -5,17 +5,17 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>br.com.delivery</groupId>
-        <artifactId>eats</artifactId>
+        <artifactId>order</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>order</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>order-container</module>
-        <module>order-web</module>
-        <module>order-domain</module>
-        <module>order-database</module>
-    </modules>
+    <artifactId>order-database</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>br.com.delivery</groupId>
+            <artifactId>order-domain-application</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
