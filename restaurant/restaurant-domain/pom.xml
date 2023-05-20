@@ -10,6 +10,11 @@
     </parent>
 
     <artifactId>restaurant-domain</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>restaurant-domain-application</module>
+        <module>restaurant-domain-core</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>18</maven.compiler.source>

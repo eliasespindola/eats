@@ -11,10 +11,31 @@
 
     <artifactId>restaurant-container</artifactId>
 
-    <properties>
-        <maven.compiler.source>18</maven.compiler.source>
-        <maven.compiler.target>18</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>br.com.delivery</groupId>
+            <artifactId>order-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>br.com.delivery</groupId>
+            <artifactId>order-domain-application</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>br.com.delivery</groupId>
+            <artifactId>order-domain-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>br.com.delivery</groupId>
+            <artifactId>order-database</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
