@@ -38,4 +38,19 @@ public class RestaurantDataAccessMapper {
                 .active(restaurantEntity.getRestaurantActive())
                 .build();
     }
+
+    public List<RestaurantEntity> restaurantToRestaurantEntity(Restaurant restaurant){
+        List<RestaurantEntity> entities = restaurant.getProducts().stream().map(item -> {
+            return RestaurantEntity.builder()
+                    .restaurantName(restaurant.getId().toString())
+                    .restaurantId(restaurant.getId().getValue())
+                    .restaurantActive(restaurant.isActive())
+                    .productId(item.getId().getValue())
+                    .productPrice(item.getPrice().getAmount())
+                    .productName("pao" + item.getId())
+                    .productAvailable(true)
+                    .build();
+        }).collect(Collectors.toList());
+        return entities;
+    }
 }

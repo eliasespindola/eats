@@ -33,4 +33,9 @@ public class RestaurantRepositoryImpl implements RestaurantRepository {
                         restaurantProducts);
         return restaurantEntities.map(restaurantDataAccessMapper::restaurantEntityToRestaurant);
     }
+
+    @Override
+    public void save(Restaurant restaurant) {
+        restaurantJpaRepository.saveAll(restaurantDataAccessMapper.restaurantToRestaurantEntity(restaurant));
+    }
 }

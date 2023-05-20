@@ -1,0 +1,16 @@
+version: '3.7 '
+services:
+  db:
+    image: mysql:8.0.32
+    hostname: db
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'eats'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    ports:
+      - "3306:3306"
+    networks:
+      - ${GLOBAL_NETWORK:-mysql}
