@@ -2,6 +2,7 @@ package br.com.delivery.eats.order.domain.application;
 
 import br.com.delivery.eats.common.domain.mapper.Mapper;
 import br.com.delivery.eats.common.domain.valueobject.OrderStatus;
+import br.com.delivery.eats.common.domain.valueobject.RestaurantId;
 import br.com.delivery.eats.order.domain.application.dto.create.CreateOrderRequest;
 import br.com.delivery.eats.order.domain.application.dto.create.CreateOrderResponse;
 import br.com.delivery.eats.order.domain.application.ports.output.CustomerRepository;
@@ -40,7 +41,8 @@ public class OrderCreateCommandHandler {
                                      Mapper<CreateOrderRequest, List<OrderItem>> orderItemMapper,
                                      Mapper<CreateOrderRequest, Order> orderMapper,
                                      OrderDomainPort domainPort,
-                                     RestaurantRepository restaurantRepository, CustomerRepository customerRepository) {
+                                     RestaurantRepository restaurantRepository,
+                                     CustomerRepository customerRepository) {
         this.restaurantMapper = restaurantMapper;
         this.streetAddressMapper = streetAddressMapper;
         this.orderItemMapper = orderItemMapper;
@@ -57,7 +59,7 @@ public class OrderCreateCommandHandler {
         checkCustomer(createOrderCommand.getCustomerId());
         Restaurant restaurant = checkRestaurant(restaurantMapper.map(createOrderCommand));
         Order order = orderMapper.map(createOrderCommand);
-        domainPort.validateAndInitiateOrder(order,restaurant);
+        domainPort.validateAndInitiateOrder(order, Restaurant.builder().restaurantId(new RestaurantId(UUID.randomUUID())).build());
 
         log.info("Pedido criado com sucesso com o id: {}", order.getId());
 

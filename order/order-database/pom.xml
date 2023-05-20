@@ -11,11 +11,27 @@
 
     <artifactId>order-database</artifactId>
 
+
     <dependencies>
+        <dependency>
+            <groupId>br.com.delivery</groupId>
+            <artifactId>order-domain-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>br.com.delivery</groupId>
+            <artifactId>common-domain</artifactId>
+        </dependency>
         <dependency>
             <groupId>br.com.delivery</groupId>
             <artifactId>order-domain-application</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
     </dependencies>
-
 </project>

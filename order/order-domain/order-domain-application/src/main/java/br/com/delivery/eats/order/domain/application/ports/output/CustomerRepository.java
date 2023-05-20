@@ -7,5 +7,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface CustomerRepository {
-    Optional<Customer> findById(UUID uuid);
+    Optional<Customer> findById(UUID customerId);
+
+    Customer save(Customer customer);
 }
