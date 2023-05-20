@@ -6,9 +6,11 @@ import br.com.delivery.eats.restaurant.database.restaurant.entity.RestaurantEnti
 import br.com.delivery.eats.restaurant.database.restaurant.repository.RestaurantJpaRepository;
 import br.com.delivery.eats.restaurant.domain.application.ports.output.RestaurantRepository;
 import br.com.delivery.eats.restaurant.domain.core.entity.Restaurant;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
+@Component
 public class RestaurantRepositoryImpl implements RestaurantRepository {
 
     private final RestaurantJpaRepository repository;
