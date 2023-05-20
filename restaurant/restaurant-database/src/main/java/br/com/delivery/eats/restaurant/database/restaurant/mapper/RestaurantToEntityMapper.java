@@ -1,4 +1,4 @@
-package br.com.delivery.eats.restaurant.database.product.mapper;
+package br.com.delivery.eats.restaurant.database.restaurant.mapper;
 
 import br.com.delivery.eats.common.domain.mapper.Mapper;
 import br.com.delivery.eats.restaurant.database.product.entity.ProductEntity;

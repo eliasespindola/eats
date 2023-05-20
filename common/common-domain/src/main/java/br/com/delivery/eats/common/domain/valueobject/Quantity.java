@@ -1,13 +1,13 @@
 package br.com.delivery.eats.common.domain.valueobject;
 
 public class Quantity {
-    private final Integer quantity;
+    private final Integer value;
 
-    public Quantity(Integer quantity) {
-        this.quantity = quantity;
+    public Quantity(Integer value) {
+        this.value = value;
     }
 
-    public Integer getQuantity() {
-        return quantity;
+    public Integer getValue() {
+        return value;
     }
 }

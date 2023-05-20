@@ -14,19 +14,19 @@
     <dependencies>
         <dependency>
             <groupId>br.com.delivery</groupId>
-            <artifactId>order-web</artifactId>
+            <artifactId>restaurant-web</artifactId>
         </dependency>
         <dependency>
             <groupId>br.com.delivery</groupId>
-            <artifactId>order-domain-application</artifactId>
+            <artifactId>restaurant-domain-application</artifactId>
         </dependency>
         <dependency>
             <groupId>br.com.delivery</groupId>
-            <artifactId>order-domain-core</artifactId>
+            <artifactId>restaurant-domain-core</artifactId>
         </dependency>
         <dependency>
             <groupId>br.com.delivery</groupId>
-            <artifactId>order-database</artifactId>
+            <artifactId>restaurant-database</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

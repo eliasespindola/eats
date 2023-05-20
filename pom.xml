@@ -70,6 +70,12 @@
 				<version>${project.version}</version>
 			</dependency>
 
+
+			<dependency>
+				<groupId>br.com.delivery</groupId>
+				<artifactId>restaurant-web</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>br.com.delivery</groupId>
 				<artifactId>restaurant-domain-core</artifactId>
@@ -78,6 +84,11 @@
 			<dependency>
 				<groupId>br.com.delivery</groupId>
 				<artifactId>restaurant-domain-application</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>br.com.delivery</groupId>
+				<artifactId>restaurant-database</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 		</dependencies>

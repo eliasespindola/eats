@@ -13,6 +13,22 @@ public class Product extends BaseEntity<ProductId> {
 
     private Boolean available;
 
+    public String getName() {
+        return name;
+    }
+
+    public Quantity getQuantity() {
+        return quantity;
+    }
+
+    public Money getPrice() {
+        return price;
+    }
+
+    public Boolean getAvailable() {
+        return available;
+    }
+
     private Product(Builder builder) {
         super.setId(builder.id);
         name = builder.name;

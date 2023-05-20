@@ -23,7 +23,7 @@ public class Restaurant extends AggregateRoot<RestaurantId> {
     }
 
     private Restaurant(Builder builder) {
-        id = builder.id;
+        super.setId(builder.id);
         name = builder.name;
         active = builder.active;
         products = builder.products;
