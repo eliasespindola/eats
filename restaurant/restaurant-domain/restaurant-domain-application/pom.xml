@@ -16,5 +16,9 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
+        <dependency>
+            <groupId>br.com.delivery</groupId>
+            <artifactId>restaurant-domain-core</artifactId>
+        </dependency>
     </dependencies>
 </project>

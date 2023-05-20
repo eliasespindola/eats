@@ -11,10 +11,22 @@
 
     <artifactId>restaurant-database</artifactId>
 
-    <properties>
-        <maven.compiler.source>18</maven.compiler.source>
-        <maven.compiler.target>18</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-
+    <dependencies>
+        <dependency>
+            <groupId>br.com.delivery</groupId>
+            <artifactId>restaurant-domain-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>br.com.delivery</groupId>
+            <artifactId>restaurant-domain-application</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+        </dependency>
+    </dependencies>
 </project>
