@@ -1,4 +1,4 @@
-package br.com.delivery.eats.common.database.entity.event.listener;
+package br.com.delivery.eats.common.messaging.event.listener;
 
 public interface MessageNotifier<T> {
 
