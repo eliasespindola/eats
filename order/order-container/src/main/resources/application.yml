@@ -11,6 +11,42 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:mysql://localhost:3306/eats
+    url: jdbc:mysql://localhost:3306/order
     username: root
     password: password
+
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      slidingWindowType: COUNT_BASED
+      slidingWindowSize: 4
+      failureRateThreshold: 50
+      waitDurationInOpenState: 4s
+      permittedNumberOfCallsInHalfOpenState: 4
+      registerHealthIndicator: true
+      eventConsumerBufferSize: 10
+      #      ignoreExceptions:
+#      recordFailurePredicate:
+
+  instances:
+    restaurantClient:
+      baseConfig: default
+
+
+resilience4j.retry:
+  configs:
+    default:
+      registerHealthIndicator: true
+      maxRetryAttempts: 2
+  instances:
+    restaurantnClient:
+      baseConfig: default
+feign:
+  circuitbreaker:
+    enabled: false
+  hystrix:
+    enabled: false
+
+eureka:
+  client:
+    enabled: false

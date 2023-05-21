@@ -38,9 +38,9 @@ public class RestaurantDomainApplicationServiceAdapter implements RestaurantDoma
         }
         Restaurant restaurant = possibleRestaurant.get();
         return RestaurantResponse.builder()
-                .restaurantId(restaurant.getId().getValue())
-                .restaurantName(restaurant.getName())
-                .restaurantActive(restaurant.getActive())
+                .id(restaurant.getId().getValue())
+                .name(restaurant.getName())
+                .active(restaurant.getActive())
                 .products(productResponseMapper.map(restaurant.getProducts()))
                 .build();
     }

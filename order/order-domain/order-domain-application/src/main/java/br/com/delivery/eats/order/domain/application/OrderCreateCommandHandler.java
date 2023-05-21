@@ -1,12 +1,11 @@
 package br.com.delivery.eats.order.domain.application;
 
 import br.com.delivery.eats.common.domain.mapper.Mapper;
-import br.com.delivery.eats.common.domain.valueobject.RestaurantId;
 import br.com.delivery.eats.order.domain.application.dto.create.CreateOrderRequest;
 import br.com.delivery.eats.order.domain.application.dto.create.CreateOrderResponse;
 import br.com.delivery.eats.order.domain.application.ports.output.CustomerRepository;
 import br.com.delivery.eats.order.domain.application.ports.output.OrderRepository;
-import br.com.delivery.eats.order.domain.application.ports.output.RestaurantRepository;
+import br.com.delivery.eats.order.domain.application.ports.output.RestaurantClientPort;
 import br.com.delivery.eats.order.domain.core.OrderDomainPort;
 import br.com.delivery.eats.order.domain.core.entity.Customer;
 import br.com.delivery.eats.order.domain.core.entity.Order;
@@ -33,7 +32,7 @@ public class OrderCreateCommandHandler {
 
     private final OrderDomainPort domainPort;
 
-    private final RestaurantRepository restaurantRepository;
+    private final RestaurantClientPort restaurantClientPort;
 
     private final CustomerRepository customerRepository;
 
@@ -43,8 +42,9 @@ public class OrderCreateCommandHandler {
                                      Mapper<CreateOrderRequest, StreetAddress> streetAddressMapper,
                                      Mapper<CreateOrderRequest, List<OrderItem>> orderItemMapper,
                                      Mapper<CreateOrderRequest, Order> orderMapper,
-                                     Mapper<Order, CreateOrderResponse> responseMapper, OrderDomainPort domainPort,
-                                     RestaurantRepository restaurantRepository,
+                                     Mapper<Order, CreateOrderResponse> responseMapper,
+                                     OrderDomainPort domainPort,
+                                     RestaurantClientPort restaurantClientPort,
                                      CustomerRepository customerRepository, OrderRepository orderRepository) {
         this.restaurantMapper = restaurantMapper;
         this.streetAddressMapper = streetAddressMapper;
@@ -52,7 +52,7 @@ public class OrderCreateCommandHandler {
         this.orderMapper = orderMapper;
         this.responseMapper = responseMapper;
         this.domainPort = domainPort;
-        this.restaurantRepository = restaurantRepository;
+        this.restaurantClientPort = restaurantClientPort;
         this.customerRepository = customerRepository;
         this.orderRepository = orderRepository;
     }
@@ -81,13 +81,7 @@ public class OrderCreateCommandHandler {
     }
 
     private Restaurant checkRestaurant(Restaurant restaurant) {
-        Optional<Restaurant> possibleRestaurant = restaurantRepository.findById(restaurant);
-        if(possibleRestaurant.isEmpty()){
-            log.warn("Could not find restaurant with restaurant id: {}", restaurant.getId());
-            throw new OrderDomainException("Could not find restaurant with restaurant id: " +
-                    restaurant.getId());
-        }
-        return possibleRestaurant.get();
+        return restaurantClientPort.findById(restaurant);
     }
 
     private void checkCustomer(UUID customerId) {

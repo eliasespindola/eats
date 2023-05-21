@@ -3,6 +3,7 @@ package br.com.delivery.eats.restaurant.database.restaurant.entity;
 import br.com.delivery.eats.restaurant.database.product.entity.ProductEntity;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Fetch;
 
 import java.util.List;
 import java.util.Objects;
@@ -22,7 +23,7 @@ public class RestaurantEntity {
     private String name;
     private Boolean active;
 
-    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<ProductEntity> items;
 
     @Override

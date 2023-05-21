@@ -1,4 +1,4 @@
-package br.com.delivery.eats.restaurant.domain.application.dto;
+package br.com.delivery.eats.order.client.dto;
 
 import lombok.Builder;
 import lombok.Getter;

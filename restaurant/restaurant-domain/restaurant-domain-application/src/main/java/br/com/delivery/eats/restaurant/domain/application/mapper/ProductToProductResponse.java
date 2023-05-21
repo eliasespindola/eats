@@ -15,10 +15,11 @@ public class ProductToProductResponse implements Mapper<List<Product>, List<Prod
     public List<ProductResponse> map(List<Product> products) {
         return products.stream().map(product -> {
             return ProductResponse.builder()
-                    .productId(product.getId().getValue())
-                    .productName(product.getName())
-                    .productPrice(product.getPrice().getAmount())
-                    .productAvailable(product.getAvailable())
+                    .id(product.getId().getValue())
+                    .name(product.getName())
+                    .price(product.getPrice().getAmount())
+                    .available(product.getAvailable())
+                    .quantity(product.getQuantity().getValue())
                     .build();
         }).collect(Collectors.toList());
     }

@@ -17,10 +17,12 @@
 		<module>order</module>
 		<module>common</module>
         <module>restaurant</module>
+        <module>order/order-client</module>
     </modules>
 	<packaging>pom</packaging>
 	<properties>
 		<java.version>17</java.version>
+		<spring-cloud.version>2022.0.3-SNAPSHOT</spring-cloud.version>
 	</properties>
 	<dependencies>
 
@@ -35,10 +37,19 @@
 			<optional>true</optional>
 			<scope>provided</scope>
 		</dependency>
+
 	</dependencies>
 
 	<dependencyManagement>
 		<dependencies>
+
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
 			<dependency>
 				<groupId>br.com.delivery</groupId>
 				<artifactId>common-web</artifactId>
@@ -106,5 +117,16 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<repositories>
+		<repository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</repository>
+	</repositories>
 
 </project>
