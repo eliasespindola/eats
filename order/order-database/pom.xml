@@ -23,6 +23,10 @@
         </dependency>
         <dependency>
             <groupId>br.com.delivery</groupId>
+            <artifactId>common-database</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>br.com.delivery</groupId>
             <artifactId>order-domain-application</artifactId>
         </dependency>
         <dependency>
