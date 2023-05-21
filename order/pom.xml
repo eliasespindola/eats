@@ -16,6 +16,7 @@
         <module>order-web</module>
         <module>order-domain</module>
         <module>order-database</module>
+        <module>order-messaging</module>
     </modules>
 
 </project>
