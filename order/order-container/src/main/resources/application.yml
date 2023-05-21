@@ -18,6 +18,7 @@ spring:
 resilience4j.circuitbreaker:
     configs:
       default:
+        sliding-window-type: COUNT_BASED
         register-health-indicator: true
         sliding-window-size: 10
         minimum-number-of-calls: 5
@@ -25,6 +26,8 @@ resilience4j.circuitbreaker:
         wait-duration-in-open-state: 5000
         permitted-number-of-calls-in-half-open-state: 3
         automatic-transition-from-open-to-half-open-enabled: true
+        ignore-exceptions:
+          - br.com.delivery.eats.order.client.exception.GenericBusinessException
     instances:
       restaurantClient:
         base-config: default
