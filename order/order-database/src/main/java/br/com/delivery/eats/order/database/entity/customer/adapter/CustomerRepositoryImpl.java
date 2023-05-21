@@ -1,8 +1,8 @@
-package br.com.delivery.eats.order.database.customer.adapter;
+package br.com.delivery.eats.order.database.entity.customer.adapter;
 
 
-import br.com.delivery.eats.order.database.customer.mapper.CustomerDataAccessMapper;
-import br.com.delivery.eats.order.database.customer.repository.CustomerJpaRepository;
+import br.com.delivery.eats.order.database.entity.customer.mapper.CustomerDataAccessMapper;
+import br.com.delivery.eats.order.database.entity.customer.repository.CustomerJpaRepository;
 import br.com.delivery.eats.order.domain.application.ports.output.CustomerRepository;
 import br.com.delivery.eats.order.domain.core.entity.Customer;
 import org.springframework.stereotype.Component;

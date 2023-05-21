@@ -1,9 +1,9 @@
-package br.com.delivery.eats.order.database.order.adapter;
+package br.com.delivery.eats.order.database.entity.order.adapter;
 
 
 import br.com.delivery.eats.common.domain.valueobject.OrderId;
-import br.com.delivery.eats.order.database.order.mapper.OrderDataAccessMapper;
-import br.com.delivery.eats.order.database.order.repository.OrderJpaRepository;
+import br.com.delivery.eats.order.database.entity.order.repository.OrderJpaRepository;
+import br.com.delivery.eats.order.database.entity.order.mapper.OrderDataAccessMapper;
 import br.com.delivery.eats.order.domain.application.ports.output.OrderRepository;
 import br.com.delivery.eats.order.domain.core.entity.Order;
 import br.com.delivery.eats.order.domain.core.valueobject.TrackingId;

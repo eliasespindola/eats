@@ -14,5 +14,6 @@
     <modules>
         <module>common-web</module>
         <module>common-domain</module>
+        <module>common-database</module>
     </modules>
 </project>

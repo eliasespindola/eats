@@ -1,7 +1,7 @@
-package br.com.delivery.eats.order.database.customer.repository;
+package br.com.delivery.eats.order.database.entity.customer.repository;
 
 
-import br.com.delivery.eats.order.database.customer.entity.CustomerEntity;
+import br.com.delivery.eats.order.database.entity.customer.entity.CustomerEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,8 +1,8 @@
-package br.com.delivery.eats.order.database.customer.mapper;
+package br.com.delivery.eats.order.database.entity.customer.mapper;
 
 
 import br.com.delivery.eats.common.domain.valueobject.CustomerId;
-import br.com.delivery.eats.order.database.customer.entity.CustomerEntity;
+import br.com.delivery.eats.order.database.entity.customer.entity.CustomerEntity;
 import br.com.delivery.eats.order.domain.core.entity.Customer;
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package br.com.delivery.eats.order.database.order.entity;
+package br.com.delivery.eats.order.database.entity.order.entity;
 
 import lombok.*;
 

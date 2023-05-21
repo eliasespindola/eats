@@ -1,10 +1,10 @@
-package br.com.delivery.eats.order.database.order.mapper;
+package br.com.delivery.eats.order.database.entity.order.mapper;
 
 
 import br.com.delivery.eats.common.domain.valueobject.*;
-import br.com.delivery.eats.order.database.order.entity.OrderAddressEntity;
-import br.com.delivery.eats.order.database.order.entity.OrderEntity;
-import br.com.delivery.eats.order.database.order.entity.OrderItemEntity;
+import br.com.delivery.eats.order.database.entity.order.entity.OrderAddressEntity;
+import br.com.delivery.eats.order.database.entity.order.entity.OrderEntity;
+import br.com.delivery.eats.order.database.entity.order.entity.OrderItemEntity;
 import br.com.delivery.eats.order.domain.core.entity.Order;
 import br.com.delivery.eats.order.domain.core.entity.OrderItem;
 import br.com.delivery.eats.order.domain.core.entity.Product;

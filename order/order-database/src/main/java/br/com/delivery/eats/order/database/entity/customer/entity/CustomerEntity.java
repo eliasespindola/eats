@@ -1,4 +1,4 @@
-package br.com.delivery.eats.order.database.customer.entity;
+package br.com.delivery.eats.order.database.entity.customer.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

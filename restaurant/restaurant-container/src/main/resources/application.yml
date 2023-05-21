@@ -11,6 +11,6 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:mysql://localhost:3306/restaurant
+    url: jdbc:mysql://localhost:3306/restaurant?createDatabaseIfNotExist=true&useSSL=false
     username: root
     password: password
