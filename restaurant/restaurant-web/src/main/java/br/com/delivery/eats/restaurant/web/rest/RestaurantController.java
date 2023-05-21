@@ -5,6 +5,7 @@ import br.com.delivery.eats.restaurant.domain.application.dto.RestaurantRequest;
 import br.com.delivery.eats.restaurant.domain.application.dto.RestaurantResponse;
 import br.com.delivery.eats.restaurant.domain.application.ports.input.RestaurantDomainApplicationServicePort;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,7 +25,7 @@ public class RestaurantController {
         this.restaurantDomainApplicationServicePort = restaurantDomainApplicationServicePort;
     }
 
-    @GetMapping("/{restaurantId}")
+    @GetMapping(value = "/{restaurantId}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<RestaurantResponse> getRestaurantById(@PathVariable UUID restaurantId) {
         RestaurantResponse restaurantResponse = restaurantDomainApplicationServicePort
                 .trackRestaurant(RestaurantRequest.builder()
