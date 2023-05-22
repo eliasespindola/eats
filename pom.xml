@@ -82,6 +82,11 @@
 			</dependency>
 			<dependency>
 				<groupId>br.com.delivery</groupId>
+				<artifactId>common-messaging</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>br.com.delivery</groupId>
 				<artifactId>order-database</artifactId>
 				<version>${project.version}</version>
 			</dependency>

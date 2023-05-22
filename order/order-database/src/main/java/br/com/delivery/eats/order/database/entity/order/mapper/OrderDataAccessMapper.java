@@ -1,7 +1,10 @@
 package br.com.delivery.eats.order.database.entity.order.mapper;
 
 
+import br.com.delivery.eats.common.database.entity.event.DomainEventType;
 import br.com.delivery.eats.common.domain.valueobject.*;
+import br.com.delivery.eats.order.database.entity.events.DomainEventPendingEntity;
+import br.com.delivery.eats.order.database.entity.events.OrderEventEntity;
 import br.com.delivery.eats.order.database.entity.order.entity.OrderAddressEntity;
 import br.com.delivery.eats.order.database.entity.order.entity.OrderEntity;
 import br.com.delivery.eats.order.database.entity.order.entity.OrderItemEntity;
@@ -16,6 +19,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import static br.com.delivery.eats.order.domain.core.entity.Order.FAILURE_MESSAGE_DELIMITER;
@@ -23,6 +27,11 @@ import static br.com.delivery.eats.order.domain.core.entity.Order.FAILURE_MESSAG
 
 @Component
 public class OrderDataAccessMapper {
+
+    public OrderEventEntity orderToEvent(Order order){
+        OrderEntity orderEntity = orderToOrderEntity(order);
+        return new DomainEventPendingEntity(UUID.randomUUID().toString(), orderEntity);
+    }
 
     public OrderEntity orderToOrderEntity(Order order) {
         OrderEntity orderEntity = OrderEntity.builder()

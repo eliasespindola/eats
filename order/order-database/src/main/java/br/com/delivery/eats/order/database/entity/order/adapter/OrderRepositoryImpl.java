@@ -2,6 +2,7 @@ package br.com.delivery.eats.order.database.entity.order.adapter;
 
 
 import br.com.delivery.eats.common.domain.valueobject.OrderId;
+import br.com.delivery.eats.order.database.entity.events.OrderEventEntity;
 import br.com.delivery.eats.order.database.entity.order.repository.OrderJpaRepository;
 import br.com.delivery.eats.order.database.entity.order.mapper.OrderDataAccessMapper;
 import br.com.delivery.eats.order.domain.application.ports.output.OrderRepository;
@@ -25,13 +26,13 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     @Override
     public Order save(Order order) {
-        return orderDataAccessMapper.orderEntityToOrder(orderJpaRepository
-                .save(orderDataAccessMapper.orderToOrderEntity(order)));
+        OrderEventEntity orderEventEntity = orderJpaRepository.save(orderDataAccessMapper.orderToEvent(order));
+        return orderDataAccessMapper.orderEntityToOrder(orderEventEntity.getSource());
     }
 
     @Override
     public Optional<Order> findById(OrderId orderId) {
-        return orderJpaRepository.findById(orderId.getValue()).map(orderDataAccessMapper::orderEntityToOrder);
+        return orderJpaRepository.findById(orderId.getValue()).map(item -> orderDataAccessMapper.orderEntityToOrder(item.getSource()));
     }
 
     @Override

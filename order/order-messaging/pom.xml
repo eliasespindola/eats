@@ -13,6 +13,14 @@
 
     <dependencies>
         <dependency>
+            <groupId>br.com.delivery</groupId>
+            <artifactId>order-database</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>br.com.delivery</groupId>
+            <artifactId>common-messaging</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-stream</artifactId>
         </dependency>
