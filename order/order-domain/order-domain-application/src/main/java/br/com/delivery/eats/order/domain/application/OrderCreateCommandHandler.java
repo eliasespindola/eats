@@ -15,6 +15,8 @@ import br.com.delivery.eats.order.domain.core.exception.OrderDomainException;
 import br.com.delivery.eats.order.domain.core.valueobject.StreetAddress;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -38,6 +40,7 @@ public class OrderCreateCommandHandler {
 
     private final OrderRepository orderRepository;
 
+
     public OrderCreateCommandHandler(Mapper<CreateOrderRequest, Restaurant> restaurantMapper,
                                      Mapper<CreateOrderRequest, StreetAddress> streetAddressMapper,
                                      Mapper<CreateOrderRequest, List<OrderItem>> orderItemMapper,
@@ -45,7 +48,8 @@ public class OrderCreateCommandHandler {
                                      Mapper<Order, CreateOrderResponse> responseMapper,
                                      OrderDomainPort domainPort,
                                      RestaurantClientPort restaurantClientPort,
-                                     CustomerRepository customerRepository, OrderRepository orderRepository) {
+                                     CustomerRepository customerRepository,
+                                     OrderRepository orderRepository) {
         this.restaurantMapper = restaurantMapper;
         this.streetAddressMapper = streetAddressMapper;
         this.orderItemMapper = orderItemMapper;
@@ -58,6 +62,8 @@ public class OrderCreateCommandHandler {
     }
 
 
+
+    @Transactional
     public CreateOrderResponse createOrder(CreateOrderRequest createOrderCommand) {
         final StreetAddress streetAddress = streetAddressMapper.map(createOrderCommand);
         final List<OrderItem> orderItems = orderItemMapper.map(createOrderCommand);
@@ -70,15 +76,7 @@ public class OrderCreateCommandHandler {
         return responseMapper.map(order);
     }
 
-    private Order saveOrder(Order order) {
-        Order orderResult = orderRepository.save(order);
-        if (orderResult == null) {
-            log.error("Could not save order!");
-            throw new OrderDomainException("Could not save order!");
-        }
-        log.info("Order is saved with id: {}", orderResult.getId().getValue());
-        return orderResult;
-    }
+
 
     private Restaurant checkRestaurant(Restaurant restaurant) {
         return restaurantClientPort.findById(restaurant);
@@ -90,5 +88,15 @@ public class OrderCreateCommandHandler {
             log.warn("Could not find customer with customer id: {}", customerId);
             throw new OrderDomainException("Could not find customer with customer id: " + customer);
         }
+    }
+
+    Order saveOrder(Order order) {
+        Order orderResult = orderRepository.save(order);
+        if (orderResult == null) {
+            log.error("Could not save order!");
+            throw new OrderDomainException("Could not save order!");
+        }
+        log.info("Order is saved with id: {}", orderResult.getId().getValue());
+        return orderResult;
     }
 }

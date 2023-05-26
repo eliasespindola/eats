@@ -28,7 +28,7 @@ import static br.com.delivery.eats.order.domain.core.entity.Order.FAILURE_MESSAG
 @Component
 public class OrderDataAccessMapper {
 
-    public OrderEventEntity orderToEvent(Order order){
+    public DomainEventPendingEntity orderToEvent(Order order){
         OrderEntity orderEntity = orderToOrderEntity(order);
         return new DomainEventPendingEntity(UUID.randomUUID().toString(), orderEntity);
     }

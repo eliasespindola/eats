@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 public class OrderEventEntityMessageNotifier implements MessageNotifier<OrderEventEntity> {
     @Override
     public void notify(OrderEventEntity orderEventEntity) {
+        log.info("FOIIIIIIIIIIIIIIIIII");
         System.out.println(orderEventEntity.getSource().getId());
     }
 }
