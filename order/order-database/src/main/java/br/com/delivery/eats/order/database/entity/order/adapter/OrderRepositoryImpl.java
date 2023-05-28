@@ -9,7 +9,10 @@ import br.com.delivery.eats.order.database.entity.order.mapper.OrderDataAccessMa
 import br.com.delivery.eats.order.domain.application.ports.output.OrderRepository;
 import br.com.delivery.eats.order.domain.core.entity.Order;
 import br.com.delivery.eats.order.domain.core.valueobject.TrackingId;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -21,6 +24,7 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     private final OrderEntityJpaRepository orderEntityJpaRepository;
 
+
     public OrderRepositoryImpl(OrderEventEntityJpaRepository orderEventEntityJpaRepository,
                                OrderDataAccessMapper orderDataAccessMapper, OrderEntityJpaRepository orderEntityJpaRepository) {
         this.orderEventEntityJpaRepository = orderEventEntityJpaRepository;
@@ -29,6 +33,7 @@ public class OrderRepositoryImpl implements OrderRepository {
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Order save(Order order) {
         DomainEventPendingEntity orderEventEntity = orderEventEntityJpaRepository.save(orderDataAccessMapper.orderToEvent(order));
         return orderDataAccessMapper.orderEntityToOrder(orderEventEntity.getSource());

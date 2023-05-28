@@ -29,6 +29,14 @@
             <artifactId>order-database</artifactId>
         </dependency>
         <dependency>
+            <groupId>br.com.delivery</groupId>
+            <artifactId>order-messaging</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>br.com.delivery</groupId>
+            <artifactId>common-messaging</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>

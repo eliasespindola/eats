@@ -18,7 +18,7 @@ public class OrderEventEntityListener {
     private final MessageNotifier<OrderEventEntity> orderEventEntityMessageNotifier;
 
     @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
-    public void onSave(final OrderEventEntity orderEventEntity) {
+    public void onSave(final DomainEventPendingEntity orderEventEntity) {
         System.out.println("foi");
         log.info("123412312313213314132132132131231321321312");
         orderEventEntityMessageNotifier.notify(orderEventEntity);

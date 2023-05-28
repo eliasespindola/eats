@@ -97,6 +97,13 @@
 			</dependency>
 
 
+
+			<dependency>
+				<groupId>br.com.delivery</groupId>
+				<artifactId>order-messaging</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
 			<dependency>
 				<groupId>br.com.delivery</groupId>
 				<artifactId>restaurant-web</artifactId>
