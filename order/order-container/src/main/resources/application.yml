@@ -1,6 +1,18 @@
 server:
   port: 8081
 spring:
+  cloud:
+    function:
+      definition: producer
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+      bindings:
+        producer-out-0:
+          group: order
+          destination: order-input
+          content-type: application/json
   jpa:
     open-in-view: false
     show-sql: true

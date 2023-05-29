@@ -1,6 +1,7 @@
 package br.com.delivery.eats.common.messaging.domain;
 
 
+import br.com.delivery.eats.common.database.entity.event.DomainEventType;
 import lombok.Getter;
 import lombok.ToString;
 
