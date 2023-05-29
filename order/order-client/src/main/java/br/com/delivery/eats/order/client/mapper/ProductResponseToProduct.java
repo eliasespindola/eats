@@ -6,7 +6,6 @@ import br.com.delivery.eats.common.domain.valueobject.Money;
 import br.com.delivery.eats.common.domain.valueobject.ProductId;
 import br.com.delivery.eats.order.client.dto.ProductResponse;
 import br.com.delivery.eats.order.domain.core.entity.Product;
-
 import org.springframework.stereotype.Component;
 
 import java.util.List;

@@ -1,6 +1,5 @@
 package br.com.delivery.eats.order.domain.messaging.listener;
 
-import br.com.delivery.eats.common.database.entity.event.DomainEventEntity;
 import br.com.delivery.eats.common.messaging.event.listener.MessageNotifier;
 import br.com.delivery.eats.order.database.entity.events.DomainEventPendingEntity;
 import br.com.delivery.eats.order.database.entity.events.OrderEventEntity;
@@ -19,8 +18,6 @@ public class OrderEventEntityListener {
 
     @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
     public void onSave(final DomainEventPendingEntity orderEventEntity) {
-        System.out.println("foi");
-        log.info("123412312313213314132132132131231321321312");
         orderEventEntityMessageNotifier.notify(orderEventEntity);
     }
 

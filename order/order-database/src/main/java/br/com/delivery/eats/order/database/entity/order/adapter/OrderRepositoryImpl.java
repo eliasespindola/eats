@@ -3,13 +3,12 @@ package br.com.delivery.eats.order.database.entity.order.adapter;
 
 import br.com.delivery.eats.common.domain.valueobject.OrderId;
 import br.com.delivery.eats.order.database.entity.events.DomainEventPendingEntity;
+import br.com.delivery.eats.order.database.entity.order.mapper.OrderDataAccessMapper;
 import br.com.delivery.eats.order.database.entity.order.repository.OrderEntityJpaRepository;
 import br.com.delivery.eats.order.database.entity.order.repository.OrderEventEntityJpaRepository;
-import br.com.delivery.eats.order.database.entity.order.mapper.OrderDataAccessMapper;
 import br.com.delivery.eats.order.domain.application.ports.output.OrderRepository;
 import br.com.delivery.eats.order.domain.core.entity.Order;
 import br.com.delivery.eats.order.domain.core.valueobject.TrackingId;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;

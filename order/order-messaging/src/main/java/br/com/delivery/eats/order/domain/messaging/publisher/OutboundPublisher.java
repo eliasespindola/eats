@@ -1,6 +1,5 @@
 package br.com.delivery.eats.order.domain.messaging.publisher;
 
-import br.com.delivery.eats.common.database.entity.event.DomainEventEntity;
 import br.com.delivery.eats.common.messaging.domain.MessageBody;
 import br.com.delivery.eats.common.messaging.event.publisher.DomainEventPublisher;
 import lombok.RequiredArgsConstructor;

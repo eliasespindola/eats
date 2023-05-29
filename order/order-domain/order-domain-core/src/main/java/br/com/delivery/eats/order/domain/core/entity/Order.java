@@ -6,7 +6,6 @@ import br.com.delivery.eats.order.domain.core.exception.OrderDomainException;
 import br.com.delivery.eats.order.domain.core.valueobject.OrderItemId;
 import br.com.delivery.eats.order.domain.core.valueobject.StreetAddress;
 import br.com.delivery.eats.order.domain.core.valueobject.TrackingId;
-import lombok.Builder;
 import lombok.Getter;
 
 import java.util.List;

@@ -3,8 +3,6 @@ package br.com.delivery.eats.order.domain.core.entity;
 import br.com.delivery.eats.common.domain.entity.BaseEntity;
 import br.com.delivery.eats.common.domain.valueobject.Money;
 import br.com.delivery.eats.common.domain.valueobject.ProductId;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 
 @Getter

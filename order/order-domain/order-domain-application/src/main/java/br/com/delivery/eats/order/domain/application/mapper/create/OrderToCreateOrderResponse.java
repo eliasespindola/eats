@@ -1,10 +1,8 @@
 package br.com.delivery.eats.order.domain.application.mapper.create;
 
 import br.com.delivery.eats.common.domain.mapper.Mapper;
-import br.com.delivery.eats.order.domain.application.dto.create.CreateOrderRequest;
 import br.com.delivery.eats.order.domain.application.dto.create.CreateOrderResponse;
 import br.com.delivery.eats.order.domain.core.entity.Order;
-import br.com.delivery.eats.order.domain.core.valueobject.StreetAddress;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -5,7 +5,6 @@ import br.com.delivery.eats.order.client.exception.GenericBusinessException;
 import br.com.delivery.eats.order.client.exception.RestaurantClientException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import feign.FeignException;
 import feign.Response;
 import feign.codec.ErrorDecoder;

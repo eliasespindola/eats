@@ -1,10 +1,8 @@
 package br.com.delivery.eats.order.database.entity.order.mapper;
 
 
-import br.com.delivery.eats.common.database.entity.event.DomainEventType;
 import br.com.delivery.eats.common.domain.valueobject.*;
 import br.com.delivery.eats.order.database.entity.events.DomainEventPendingEntity;
-import br.com.delivery.eats.order.database.entity.events.OrderEventEntity;
 import br.com.delivery.eats.order.database.entity.order.entity.OrderAddressEntity;
 import br.com.delivery.eats.order.database.entity.order.entity.OrderEntity;
 import br.com.delivery.eats.order.database.entity.order.entity.OrderItemEntity;

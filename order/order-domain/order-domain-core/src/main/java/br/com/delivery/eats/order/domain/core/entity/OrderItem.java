@@ -4,7 +4,6 @@ import br.com.delivery.eats.common.domain.entity.BaseEntity;
 import br.com.delivery.eats.common.domain.valueobject.Money;
 import br.com.delivery.eats.common.domain.valueobject.OrderId;
 import br.com.delivery.eats.order.domain.core.valueobject.OrderItemId;
-import lombok.Builder;
 import lombok.Getter;
 
 @Getter

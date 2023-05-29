@@ -15,7 +15,6 @@ import br.com.delivery.eats.order.domain.core.exception.OrderDomainException;
 import br.com.delivery.eats.order.domain.core.valueobject.StreetAddress;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
