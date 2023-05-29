@@ -32,7 +32,6 @@ public class OrderRepositoryImpl implements OrderRepository {
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Order save(Order order) {
         DomainEventPendingEntity orderEventEntity = orderEventEntityJpaRepository.save(orderDataAccessMapper.orderToEvent(order));
         return orderDataAccessMapper.orderEntityToOrder(orderEventEntity.getSource());

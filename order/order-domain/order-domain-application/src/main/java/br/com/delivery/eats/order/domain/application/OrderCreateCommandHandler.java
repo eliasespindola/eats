@@ -25,8 +25,6 @@ import java.util.UUID;
 @Component
 public class OrderCreateCommandHandler {
     private final Mapper<CreateOrderRequest,Restaurant> restaurantMapper;
-    private final Mapper<CreateOrderRequest,StreetAddress> streetAddressMapper;
-    private final Mapper<CreateOrderRequest,List<OrderItem>> orderItemMapper;
 
     private final Mapper<CreateOrderRequest, Order> orderMapper;
     private final Mapper<Order, CreateOrderResponse> responseMapper;
@@ -41,8 +39,6 @@ public class OrderCreateCommandHandler {
 
 
     public OrderCreateCommandHandler(Mapper<CreateOrderRequest, Restaurant> restaurantMapper,
-                                     Mapper<CreateOrderRequest, StreetAddress> streetAddressMapper,
-                                     Mapper<CreateOrderRequest, List<OrderItem>> orderItemMapper,
                                      Mapper<CreateOrderRequest, Order> orderMapper,
                                      Mapper<Order, CreateOrderResponse> responseMapper,
                                      OrderDomainPort domainPort,
@@ -50,8 +46,6 @@ public class OrderCreateCommandHandler {
                                      CustomerRepository customerRepository,
                                      OrderRepository orderRepository) {
         this.restaurantMapper = restaurantMapper;
-        this.streetAddressMapper = streetAddressMapper;
-        this.orderItemMapper = orderItemMapper;
         this.orderMapper = orderMapper;
         this.responseMapper = responseMapper;
         this.domainPort = domainPort;
@@ -64,8 +58,6 @@ public class OrderCreateCommandHandler {
 
     @Transactional
     public CreateOrderResponse createOrder(CreateOrderRequest createOrderCommand) {
-        final StreetAddress streetAddress = streetAddressMapper.map(createOrderCommand);
-        final List<OrderItem> orderItems = orderItemMapper.map(createOrderCommand);
         checkCustomer(createOrderCommand.getCustomerId());
         Restaurant restaurant = checkRestaurant(restaurantMapper.map(createOrderCommand));
         Order order = orderMapper.map(createOrderCommand);
