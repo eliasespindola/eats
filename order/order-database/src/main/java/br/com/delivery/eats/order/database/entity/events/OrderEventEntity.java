@@ -1,7 +1,7 @@
 package br.com.delivery.eats.order.database.entity.events;
 
 import br.com.delivery.eats.common.database.entity.event.DomainEventEntity;
-import br.com.delivery.eats.common.database.entity.event.DomainEventType;
+import br.com.delivery.eats.common.domain.events.DomainEventType;
 import br.com.delivery.eats.order.database.entity.order.entity.OrderEntity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;

@@ -1,5 +1,6 @@
 package br.com.delivery.eats.common.database.entity.event;
 
+import br.com.delivery.eats.common.domain.events.DomainEventType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

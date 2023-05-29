@@ -1,4 +1,4 @@
-package br.com.delivery.eats.common.database.entity.event;
+package br.com.delivery.eats.common.domain.events;
 
 public enum DomainEventType {
     ORDER_PENDING_EVENT,
