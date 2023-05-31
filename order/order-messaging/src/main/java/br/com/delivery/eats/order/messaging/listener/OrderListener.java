@@ -19,6 +19,6 @@ public class OrderListener {
 
     @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
     public void onSave(OrderEventEntity orderEventEntity){
-        orderNotifier.notify(orderEntityToOrderEventMapper.map(orderEventEntity));
+        orderNotifier.notify(orderEntityToOrderEventMapper.map(orderEventEntity), orderEventEntity.getCorrelationId());
     }
 }

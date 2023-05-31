@@ -11,7 +11,7 @@ public class OrderCreatedEvent extends OrderEvent<Order> {
     private final Order order;
 
     private OrderCreatedEvent(Builder builder) {
-        super(UUID.randomUUID(), DomainEventType.ORDER_PENDING_EVENT, ZonedDateTime.now());
+        super(builder.order.getId().getValue(), DomainEventType.ORDER_PENDING_EVENT, ZonedDateTime.now());
         order = builder.order;
     }
 
