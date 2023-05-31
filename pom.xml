@@ -57,6 +57,11 @@
 			</dependency>
 			<dependency>
 				<groupId>br.com.delivery</groupId>
+				<artifactId>restaurant-messaging</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>br.com.delivery</groupId>
 				<artifactId>common-domain</artifactId>
 				<version>${project.version}</version>
 			</dependency>

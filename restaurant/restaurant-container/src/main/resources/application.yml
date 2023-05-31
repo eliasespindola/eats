@@ -1,6 +1,19 @@
 server:
   port: 8082
+
 spring:
+  cloud:
+    function:
+      definition: consumer
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+      bindings:
+        consumer-in-0:
+          group: restaurant
+          destination: order-input
+          content-type: application/json
   jpa:
     open-in-view: false
     show-sql: true

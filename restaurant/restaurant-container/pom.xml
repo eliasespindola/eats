@@ -26,6 +26,10 @@
         </dependency>
         <dependency>
             <groupId>br.com.delivery</groupId>
+            <artifactId>restaurant-messaging</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>br.com.delivery</groupId>
             <artifactId>restaurant-database</artifactId>
         </dependency>
         <dependency>

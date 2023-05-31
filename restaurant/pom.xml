@@ -16,6 +16,7 @@
         <module>restaurant-web</module>
         <module>restaurant-database</module>
         <module>restaurant-domain</module>
+        <module>restaurant-messaging</module>
     </modules>
 
     <properties>

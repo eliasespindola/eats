@@ -5,6 +5,9 @@ import br.com.delivery.eats.order.domain.core.entity.Product;
 import br.com.delivery.eats.order.domain.core.entity.Restaurant;
 import br.com.delivery.eats.order.domain.core.exception.OrderDomainException;
 
+import java.util.List;
+import java.util.UUID;
+
 
 public class OrderDomainAdapter implements OrderDomainPort {
     @Override
@@ -13,6 +16,21 @@ public class OrderDomainAdapter implements OrderDomainPort {
         setOrderProductInformation(order, restaurant);
         order.validateOrder();
         order.initializeOrder();
+    }
+
+    @Override
+    public void payOrder(Order order, UUID uuid) {
+        return;
+    }
+
+    @Override
+    public void approveOrder(Order order) {
+        return;
+    }
+
+    @Override
+    public void cancelOrder(Order order, List<String> failureMessages) {
+        return;
     }
 
     private void validateRestaurant(final Restaurant restaurant) {
