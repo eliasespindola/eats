@@ -111,6 +111,14 @@ public class Restaurant extends AggregateRoot<RestaurantId> {
       }
     }
 
+    public Restaurant substract(List<Product> products) {
+        this.getProducts().stream().forEach(item -> products.forEach(currentProduct -> {
+            item.updateQuantity(item.getQuantity().substract(currentProduct.getQuantity().getValue()));
+        }));
+
+        return this;
+    }
+
 
     public static final class Builder {
         private RestaurantId id;

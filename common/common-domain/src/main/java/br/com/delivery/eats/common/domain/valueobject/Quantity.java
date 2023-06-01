@@ -10,4 +10,8 @@ public class Quantity {
     public Integer getValue() {
         return value;
     }
+
+    public Quantity substract(Integer value){
+        return new Quantity(this.value - value);
+    }
 }

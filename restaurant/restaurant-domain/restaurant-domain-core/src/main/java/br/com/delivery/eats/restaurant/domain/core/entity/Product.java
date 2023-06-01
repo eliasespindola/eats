@@ -38,6 +38,12 @@ public class Product extends BaseEntity<ProductId> {
         return subTotal;
     }
 
+
+    public void updateQuantity(Quantity quantity){
+        this.quantity = quantity;
+    }
+
+
     private Product(Builder builder) {
         super.setId(builder.id);
         name = builder.name;
@@ -47,16 +53,6 @@ public class Product extends BaseEntity<ProductId> {
         subTotal = builder.subTotal;
     }
 
-
-    public void validateQuantity(List<Product> products) {
-        boolean hasInsufficientQuantity = products.stream()
-                .filter(product -> product.getId().equals(this.getId()))
-                .anyMatch(product -> this.getQuantity().getValue() > product.getQuantity().getValue());
-
-        if (hasInsufficientQuantity) {
-            throw new DomainException("Não temos quantidade suficiente");
-        }
-    }
 
     public static final class Builder {
         private ProductId id;
