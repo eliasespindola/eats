@@ -47,16 +47,16 @@ public class Product extends BaseEntity<ProductId> {
         subTotal = builder.subTotal;
     }
 
-    public void validQuantity(List<Product> products) {
-        for(int i=0; i < products.size(); i++){
-            if(products.get(i).getId() == this.getId()){
-                if(this.getQuantity().getValue() > products.get(i).getQuantity().getValue()){
-                    throw new DomainException(" Nao temos quantidade o suficiente");
-                }
-            }
+
+    public void validateQuantity(List<Product> products) {
+        boolean hasInsufficientQuantity = products.stream()
+                .filter(product -> product.getId().equals(this.getId()))
+                .anyMatch(product -> this.getQuantity().getValue() > product.getQuantity().getValue());
+
+        if (hasInsufficientQuantity) {
+            throw new DomainException("Não temos quantidade suficiente");
         }
     }
-
 
     public static final class Builder {
         private ProductId id;
