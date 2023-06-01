@@ -2,10 +2,12 @@ package br.com.delivery.eats.restaurant.domain.core.entity;
 
 import br.com.delivery.eats.common.domain.entity.AggregateRoot;
 import br.com.delivery.eats.common.domain.valueobject.RestaurantId;
+import br.com.delivery.eats.restaurant.domain.core.exception.RestaurantDomainException;
 
 import java.util.List;
 import java.util.UUID;
 
+//TODO
 public class Restaurant extends AggregateRoot<RestaurantId> {
     private String name;
     private Boolean active;
@@ -43,7 +45,14 @@ public class Restaurant extends AggregateRoot<RestaurantId> {
     }
 
     public Restaurant validateRestaurant() {
-        return null;
+        existsRestaurant();
+        return this;
+    }
+
+    void existsRestaurant() {
+        if(!this.getActive()){
+            throw new RestaurantDomainException("Restaurant with id " + this.getId().getValue() + " is currently not active!");
+        }
     }
 
 

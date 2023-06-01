@@ -8,14 +8,7 @@ public class RestaurantDomainAdapter implements RestaurantDomainPort {
 
     @Override
     public Restaurant valid(Restaurant restaurant) {
-        valid(restaurant);
-        Restaurant restaurant1 = restaurant.validateRestaurant();
-        return restaurant1;
-    }
-
-    void existsRestaurant(final Restaurant restaurant) {
-        if(!restaurant.getActive()){
-            throw new RestaurantDomainException("Restaurant with id " + restaurant.getId().getValue() + " is currently not active!");
-        }
+        restaurant.validateRestaurant();
+        return restaurant;
     }
 }

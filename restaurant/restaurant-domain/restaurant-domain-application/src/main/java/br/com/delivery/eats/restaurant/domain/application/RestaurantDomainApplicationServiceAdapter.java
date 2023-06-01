@@ -52,9 +52,7 @@ public class RestaurantDomainApplicationServiceAdapter implements RestaurantDoma
 
     @Override
     public Restaurant handleRestaurant(UUID restaurantId, DomainEventType domainEventType) {
-        Restaurant restaurant = existRestaurant(restaurantId);
-        Restaurant valid = restaurantDomainPort.valid(restaurant);
-        return valid;
+        return restaurantDomainPort.valid(existRestaurant(restaurantId));
     }
 
     private Restaurant existRestaurant(UUID restaurantId) {
