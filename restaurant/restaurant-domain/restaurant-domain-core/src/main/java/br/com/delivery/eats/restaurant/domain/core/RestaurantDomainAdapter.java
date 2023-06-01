@@ -7,8 +7,8 @@ public class RestaurantDomainAdapter implements RestaurantDomainPort {
 
 
     @Override
-    public Restaurant valid(Restaurant restaurant) {
-        restaurant.validateRestaurant();
-        return restaurant;
+    public Restaurant valid(Restaurant restaurant, Restaurant currentRestaurant) {
+        restaurant.validateRestaurant(currentRestaurant);
+        return null;
     }
 }

@@ -1,11 +1,11 @@
 package br.com.delivery.eats.restaurant.domain.core.entity;
 
 import br.com.delivery.eats.common.domain.entity.AggregateRoot;
+import br.com.delivery.eats.common.domain.exception.DomainException;
 import br.com.delivery.eats.common.domain.valueobject.RestaurantId;
-import br.com.delivery.eats.restaurant.domain.core.exception.RestaurantDomainException;
 
+import java.math.BigDecimal;
 import java.util.List;
-import java.util.UUID;
 
 //TODO
 public class Restaurant extends AggregateRoot<RestaurantId> {
@@ -44,15 +44,41 @@ public class Restaurant extends AggregateRoot<RestaurantId> {
         return products;
     }
 
-    public Restaurant validateRestaurant() {
-        existsRestaurant();
+    public Restaurant validateRestaurant(Restaurant currentRestaurant) {
+        validId(currentRestaurant);
+        validRestaurant(currentRestaurant);
+        validSubTotal();
+        validQuantity(currentRestaurant);
         return this;
     }
 
-    void existsRestaurant() {
-        if(!this.getActive()){
-            throw new RestaurantDomainException("Restaurant with id " + this.getId().getValue() + " is currently not active!");
+    private void validQuantity(Restaurant currentRestaurant) {
+       products.stream().forEach(item -> item.validQuantity(currentRestaurant.getProducts()));
+    }
+
+    private void validRestaurant(Restaurant currentRestaurant) {
+        if(!currentRestaurant.getActive()){
+            throw new DomainException("Restaurant is not active");
         }
+    }
+
+    public void validSubTotal(){
+        BigDecimal total = this.getProducts().stream()
+                .map(product -> product.getPrice().getAmount().multiply(new BigDecimal(product.getQuantity().getValue())))
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        if(!total.equals(getSubTotal())){
+            throw new DomainException("Sub total is invalid");
+        }
+    }
+
+    public BigDecimal getSubTotal(){
+        return this.getProducts().stream().map(item -> item.getSubTotal().getAmount()).reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    void validId(Restaurant currentRestaurant) {
+      if(!currentRestaurant.getId().equals(this.getId())){
+          throw new DomainException("Restaurant id error");
+      }
     }
 
 

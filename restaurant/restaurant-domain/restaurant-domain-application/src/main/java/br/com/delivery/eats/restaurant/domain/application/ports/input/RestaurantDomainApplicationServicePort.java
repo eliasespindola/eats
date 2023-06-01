@@ -12,5 +12,5 @@ public interface RestaurantDomainApplicationServicePort {
 
     RestaurantResponse trackRestaurant(@Valid RestaurantRequest trackOrderQuery);
 
-    Restaurant handleRestaurant(UUID restaurantId, DomainEventType domainEventType);
+    Restaurant handleRestaurant(Restaurant restaurant, DomainEventType domainEventType);
 }

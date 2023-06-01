@@ -1,9 +1,12 @@
 package br.com.delivery.eats.restaurant.domain.core.entity;
 
 import br.com.delivery.eats.common.domain.entity.BaseEntity;
+import br.com.delivery.eats.common.domain.exception.DomainException;
 import br.com.delivery.eats.common.domain.valueobject.Money;
 import br.com.delivery.eats.common.domain.valueobject.ProductId;
 import br.com.delivery.eats.common.domain.valueobject.Quantity;
+
+import java.util.List;
 
 public class Product extends BaseEntity<ProductId> {
 
@@ -12,6 +15,8 @@ public class Product extends BaseEntity<ProductId> {
     private Money price;
 
     private Boolean available;
+
+    private Money subTotal;
 
     public String getName() {
         return name;
@@ -29,12 +34,27 @@ public class Product extends BaseEntity<ProductId> {
         return available;
     }
 
+    public Money getSubTotal() {
+        return subTotal;
+    }
+
     private Product(Builder builder) {
         super.setId(builder.id);
         name = builder.name;
         quantity = builder.quantity;
         price = builder.price;
         available = builder.available;
+        subTotal = builder.subTotal;
+    }
+
+    public void validQuantity(List<Product> products) {
+        for(int i=0; i < products.size(); i++){
+            if(products.get(i).getId() == this.getId()){
+                if(this.getQuantity().getValue() > products.get(i).getQuantity().getValue()){
+                    throw new DomainException(" Nao temos quantidade o suficiente");
+                }
+            }
+        }
     }
 
 
@@ -44,6 +64,8 @@ public class Product extends BaseEntity<ProductId> {
         private Quantity quantity;
         private Money price;
         private Boolean available;
+
+        private Money subTotal;
 
         private Builder() {
         }
@@ -59,6 +81,11 @@ public class Product extends BaseEntity<ProductId> {
 
         public Builder name(String val) {
             name = val;
+            return this;
+        }
+
+        public Builder subTotal(Money val) {
+            subTotal = val;
             return this;
         }
 
