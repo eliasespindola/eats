@@ -8,11 +8,4 @@ import java.util.UUID;
 
 public interface OrderDomainPort {
     void validateAndInitiateOrder(Order order, Restaurant restaurant);
-
-    void payOrder(Order order, UUID uuid);
-
-    void approveOrder(Order order);
-
-
-    void cancelOrder(Order order, List<String> failureMessages);
 }

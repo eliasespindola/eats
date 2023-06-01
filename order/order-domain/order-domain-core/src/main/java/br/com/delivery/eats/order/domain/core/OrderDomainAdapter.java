@@ -18,21 +18,6 @@ public class OrderDomainAdapter implements OrderDomainPort {
         order.initializeOrder();
     }
 
-    @Override
-    public void payOrder(Order order, UUID uuid) {
-        return;
-    }
-
-    @Override
-    public void approveOrder(Order order) {
-        return;
-    }
-
-    @Override
-    public void cancelOrder(Order order, List<String> failureMessages) {
-        return;
-    }
-
     private void validateRestaurant(final Restaurant restaurant) {
         if(!restaurant.isActive()){
             throw new OrderDomainException("Restaurant with id " + restaurant.getId().getValue() + " is currently not active!");
