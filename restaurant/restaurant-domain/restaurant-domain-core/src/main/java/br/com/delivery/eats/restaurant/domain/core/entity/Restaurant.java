@@ -42,8 +42,8 @@ public class Restaurant extends AggregateRoot<RestaurantId> {
         return products;
     }
 
-    public void initializeOrder() {
-        setId(new RestaurantId(UUID.randomUUID()));
+    public Restaurant validateRestaurant() {
+        return null;
     }
 
 

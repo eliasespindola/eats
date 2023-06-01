@@ -1,5 +1,6 @@
 package br.com.delivery.eats.restaurant.domain.application;
 
+import br.com.delivery.eats.common.domain.events.DomainEventType;
 import br.com.delivery.eats.common.domain.mapper.Mapper;
 import br.com.delivery.eats.common.domain.valueobject.RestaurantId;
 import br.com.delivery.eats.restaurant.domain.application.dto.ProductResponse;
@@ -7,6 +8,7 @@ import br.com.delivery.eats.restaurant.domain.application.dto.RestaurantRequest;
 import br.com.delivery.eats.restaurant.domain.application.dto.RestaurantResponse;
 import br.com.delivery.eats.restaurant.domain.application.ports.input.RestaurantDomainApplicationServicePort;
 import br.com.delivery.eats.restaurant.domain.application.ports.output.RestaurantRepository;
+import br.com.delivery.eats.restaurant.domain.core.RestaurantDomainPort;
 import br.com.delivery.eats.restaurant.domain.core.entity.Product;
 import br.com.delivery.eats.restaurant.domain.core.entity.Restaurant;
 import br.com.delivery.eats.restaurant.domain.core.exception.RestaurantNotFoundException;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Slf4j
 @Component
@@ -22,11 +25,13 @@ public class RestaurantDomainApplicationServiceAdapter implements RestaurantDoma
 
     private final RestaurantRepository repository;
     private final Mapper<List<Product>, List<ProductResponse>> productResponseMapper;
+    private final RestaurantDomainPort restaurantDomainPort;
 
     public RestaurantDomainApplicationServiceAdapter(RestaurantRepository repository,
-                                                     Mapper<List<Product>, List<ProductResponse>> productResponseMapper) {
+                                                     Mapper<List<Product>, List<ProductResponse>> productResponseMapper, RestaurantDomainPort restaurantDomainPort) {
         this.repository = repository;
         this.productResponseMapper = productResponseMapper;
+        this.restaurantDomainPort = restaurantDomainPort;
     }
 
     @Override
@@ -44,4 +49,21 @@ public class RestaurantDomainApplicationServiceAdapter implements RestaurantDoma
                 .products(productResponseMapper.map(restaurant.getProducts()))
                 .build();
     }
+
+    @Override
+    public Restaurant handleRestaurant(UUID restaurantId, DomainEventType domainEventType) {
+        Restaurant restaurant = existRestaurant(restaurantId);
+        Restaurant valid = restaurantDomainPort.valid(restaurant);
+        return valid;
+    }
+
+    private Restaurant existRestaurant(UUID restaurantId) {
+        Optional<Restaurant> possibleRestaurant = repository.findRestaurantById(new RestaurantId(restaurantId));
+        if(possibleRestaurant.isEmpty()){
+            throw new RestaurantNotFoundException("Restaurant with id " + restaurantId + "not found!");
+        }
+        return possibleRestaurant.get();
+    }
+
+
 }
