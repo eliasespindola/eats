@@ -4,6 +4,7 @@ package br.com.delivery.eats.common.messaging.domain;
 
 import br.com.delivery.eats.common.domain.events.DomainEventType;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 

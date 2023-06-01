@@ -1,9 +1,11 @@
-package br.com.delivery.eats.restaurant.messaging.listener;
+package br.com.delivery.eats.restaurant.messaging.domain.dto;
 
 import br.com.delivery.eats.common.domain.events.DomainEventType;
 import br.com.delivery.eats.common.domain.valueobject.OrderStatus;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
@@ -12,6 +14,8 @@ import java.util.UUID;
 
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class OrderMessageEvent {
     private UUID id;

@@ -1,4 +1,4 @@
-package br.com.delivery.eats.restaurant.messaging.listener;
+package br.com.delivery.eats.restaurant.messaging.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
