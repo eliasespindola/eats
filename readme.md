@@ -1,0 +1,1 @@
+https://refactorfirst.com/spring-cloud-stream-with-kafka-communication
